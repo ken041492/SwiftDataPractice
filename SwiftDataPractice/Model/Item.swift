@@ -10,29 +10,42 @@ import SwiftData
 
 
 @Model
+class DataModel2 {
+    var name: String
+    
+    var age: Int
+    
+    init(name: String, age: Int) {
+        self.name = name
+        
+        self.age = age
+    }
+}
+
+@Model
 class DataModel {
 
-    var style: Style = Style.fruit
+    var style: Style.RawValue
     
     var name: String
 
-    var quantity: Double
+    var quantity: Int
 
     var calories: Int
 
     init(
         name: String,
-        quantity: Double,
+        quantity: Int,
         calories: Int,
         style: Style
     ) {
         self.name = name
         self.quantity = quantity
         self.calories = calories
-        self.style = style
+        self.style = style.rawValue
     }
     
-    enum Style: String, Codable, CaseIterable {
+    enum Style: String, CaseIterable {
         case fruit = "Fruit"
         case vegetable = "Vegetable"
         case snack = "Snack"
